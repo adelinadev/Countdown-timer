@@ -1,4 +1,4 @@
-let deadline = '2022-07-02';
+let deadline = '2022-12-25';
 let id = document.querySelector('.id');
 
 
@@ -18,7 +18,7 @@ const timer = (x, y) => {
         seconds = Math.floor((t/1000) % 60),
         minutes = Math.floor((t/1000/60) % 60),
         hours = Math.floor((t/(1000 * 60 * 60)) % 24),
-        days = Math.floor((t/(1000 * 60 * 60)) % 24);
+        days = Math.floor((t/(1000 * 60 * 60 * 24)));
 
 
         return {
@@ -31,7 +31,7 @@ const timer = (x, y) => {
     };
 
     const setClock = (selector, endtime) => {
-        const timer = document.querySelector(selector),
+        const timer = document.querySelector('.container'),
               days = timer.querySelector("#days"),
               hours = timer.querySelector("#hours"),
               minutes = timer.querySelector("#minutes"),
@@ -41,10 +41,10 @@ const timer = (x, y) => {
         function updateClock() {
             const t = getTimeRemaining(endtime);
 
-            days.textContent = addZero(t.days);
-            hours.textContent = addZero(t.hours);
-            minutes.textContent = addZero(t.minutes);
-            seconds.textContent = addZero(t.seconds);
+            days.textContent = t.days;
+            hours.textContent = t.hours;
+            minutes.textContent = t.minutes;
+            seconds.textContent = t.seconds;
 
             if (t.total <= 0){
                 days.textContent = "00";
